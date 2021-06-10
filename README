@@ -33,7 +33,7 @@
 EMANE VM on Azure:
 [Username: emane]
 SSH command: ssh -X sangnguyen@20.86.43.149
-Password: telekommunikation@123
+Password: *****
 
 Scripts: There are some simple scripts for monitoring table statistics of each NEM in directory "./10/monitor".
 Use new shell to run these scripts.

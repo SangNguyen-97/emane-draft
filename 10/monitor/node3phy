@@ -1,0 +1,17 @@
+#!/bin/bash -
+
+echo -n "Waiting for 1 second delay.."
+
+sleep 1
+
+echo 
+
+watch -e -t -n .5 'set -f; \
+                emanesh node-3 get table nems phy \
+                 BroadcastPacketAcceptTable0 \
+                 BroadcastPacketDropTable0 \
+                 EventReceptionTable \
+                 FadingSelectionInfoTable \
+                 LocationEventInfoTable \
+                 PathlossEventInfoTable \
+                 ReceivePowerTable'

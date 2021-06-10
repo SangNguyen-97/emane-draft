@@ -1,0 +1,3 @@
+#!/bin/bash -
+LPATH=$(pwd | awk '{print substr($1, 1, length($1)-2)}' -)
+../scripts/democtl-host start "$@" $LPATH 10 3

@@ -1,0 +1,9 @@
+#!/bin/bash -
+echo -n "Waiting for 1 second delay.."
+
+sleep 1
+
+echo 
+
+watch -e -t -n .5 'set -f; \
+                emanesh node-2 get table nems transport'

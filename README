@@ -1,0 +1,41 @@
+1. Install EMANE from https://github.com/adjacentlink/emane
+
+2. Install dependencies with the following command:
+
+# sudo apt-get install lxc bridge-utils mgen fping gpsd gpsd-clients \
+    iperf multitail olsrd openssh-server python-tk python-pmw python-lxml \
+    python-stdeb build-essential
+
+3. Add the following lines to /etc/hosts:
+
+10.99.0.1 node-1
+10.99.0.2 node-2
+10.99.0.3 node-3
+10.99.0.4 node-4
+10.99.0.5 node-5
+10.99.0.6 node-6
+10.99.0.7 node-7
+10.99.0.8 node-8
+10.99.0.9 node-9
+10.99.0.10 node-10
+10.99.0.100 node-server
+10.100.0.1 radio-1
+10.100.0.2 radio-2
+10.100.0.3 radio-3
+10.100.0.4 radio-4
+10.100.0.5 radio-5
+10.100.0.6 radio-6
+10.100.0.7 radio-7
+10.100.0.8 radio-8
+10.100.0.9 radio-9
+10.100.0.10 radio-10
+
+EMANE VM on Azure:
+[Username: emane]
+SSH command: ssh -X emane@20.56.178.220
+Password: telekommunikation@123
+
+Scripts: There are some simple scripts for monitoring table statistics of each NEM in directory "./10/monitor".
+Use new shell to run these scripts.
+
+IMPORTANT:

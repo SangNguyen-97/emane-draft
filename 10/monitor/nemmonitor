@@ -1,0 +1,99 @@
+#!/bin/bash -
+
+TRANSPORT_TABLE="BroadcastPacketAcceptTable \
+                BroadcastPacketDropTable \
+                EventReceptionTable \
+                UnicastPacketAcceptTable \
+                UnicastPacketDropTable"
+
+MAC_TABLE="BroadcastPacketDropTable0 \
+            UnicastPacketDropTable0 \
+            NeighborMetricTable \
+            NeighborStatusTable"
+
+            # BroadcastPacketAcceptTable0 \
+            # UnicastPacketAcceptTable0 \
+            # EventReceptionTable \
+
+PHY_TABLE="LocationEventInfoTable \
+            ReceivePowerTable\
+            BroadcastPacketAcceptTable0 \
+            BroadcastPacketDropTable0 \
+            " 
+            # EventReceptionTable \
+            # AntennaProfileEventInfoTable \
+            # PathlossEventInfoTable \
+            # UnicastPacketAcceptTable0 \
+            # UnicastPacketDropTable0 \
+            # FadingSelectionInfoTable \
+
+
+
+watchphy()
+{
+    local lnode=$1
+    local lnem=$2
+    watch -e -t -n .5 "set -f; \
+                    emanesh node-$lnode get table $lnem phy $PHY_TABLE"
+}
+
+watchmac()
+{
+    local lnode=$1
+    local lnem=$2
+    watch -e -t -n .5 "set -f; \
+                emanesh node-$lnode get table $lnem mac $MAC_TABLE"
+}
+
+watchtransport()
+{
+    local lnode=$1
+    local lnem=$2
+    watch -e -t -n .5 "set -f; \
+                emanesh node-$lnode get table $lnem transport $TRANSPORT_TABLE"
+}
+
+usage()
+{
+    echo "USAGE:"
+    echo "<script> <node> <nemID> <layer>"
+    echo "Where:"
+    echo "<script>: Path to this \"nemmonitor\" script"
+    echo "<node>: Node containing the "
+    echo "<nemID>: ID of the NEM (as in the platform XML file(s))"
+    echo "<layer>: One of the values: \"transport\", \"mac\" or \"phy\""
+}
+
+if [ $1 = "help" ] || [ $1 = "-h" ] || [ $1 = "--help" ]
+then
+    usage
+    exit 0
+fi
+
+
+if [ $# != 3 ]
+then
+    echo "Wrong number of arguments..."
+    usage
+    exit 1
+fi
+
+node=$1
+nem=$2
+layer=$3
+
+case $layer in
+    transport)
+        watchtransport $node $nem 
+        ;;
+    mac)
+        watchmac $node $nem 
+        ;;
+    phy)
+        watchphy $node $nem 
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
+esac

@@ -8,18 +8,18 @@
   <param name="eventservicedevice" value="eth1"/>
   <param name="controlportendpoint" value="0.0.0.0:47000"/>
 
-  <nem id="21" definition="rfpipenem.xml">
+  <nem id="22" definition="rfpipenem.xml">
     <transport definition="transvirtual.xml">
-      <param name="address" value="10.100.1.2"/>
+      <param name="address" value="10.100.2.2"/>
       <param name="mask" value="255.255.255.0"/>
     </transport>
   </nem>
 
 
 
-  <nem id="22" definition="ieee80211abgnem.xml">
+  <nem id="21" definition="ieee80211abgnem.xml">
     <transport definition="transvirtual.xml">
-      <param name="address" value="10.100.2.2"/>
+      <param name="address" value="10.100.1.2"/>
       <param name="mask" value="255.255.255.0"/>
       <param name="device" value="emane1"/>
     </transport>

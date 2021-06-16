@@ -34,7 +34,7 @@ watchphy()
     local lnode=$1
     local lnem=$2
     watch -e -t -n .5 "set -f; \
-                    emanesh node-$lnode get table $lnem phy $PHY_TABLE"
+                    emanesh $lnode get table $lnem phy $PHY_TABLE"
 }
 
 watchmac()
@@ -42,7 +42,7 @@ watchmac()
     local lnode=$1
     local lnem=$2
     watch -e -t -n .5 "set -f; \
-                emanesh node-$lnode get table $lnem mac $MAC_TABLE"
+                emanesh $lnode get table $lnem mac $MAC_TABLE"
 }
 
 watchtransport()
@@ -50,16 +50,16 @@ watchtransport()
     local lnode=$1
     local lnem=$2
     watch -e -t -n .5 "set -f; \
-                emanesh node-$lnode get table $lnem transport $TRANSPORT_TABLE"
+                emanesh $lnode get table $lnem transport $TRANSPORT_TABLE"
 }
 
 usage()
 {
     echo "USAGE:"
-    echo "<script> <node> <nemID> <layer>"
+    echo "<script> <node-IP> <nemID> <layer>"
     echo "Where:"
     echo "<script>: Path to this \"nemmonitor\" script"
-    echo "<node>: Node containing the "
+    echo "<node-IP>: IP of the node containing the inquired NEM"
     echo "<nemID>: ID of the NEM (as in the platform XML file(s))"
     echo "<layer>: One of the values: \"transport\", \"mac\" or \"phy\""
 }
